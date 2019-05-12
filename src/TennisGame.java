@@ -1,22 +1,27 @@
-public class TennisGame {
+public class  TennisGame {
+
+    public static final int LOVE = 0;
+    public static final int FIFTEEN = 1;
+    public static final int THIRTY = 2;
+    public static final int FORTY = 3;
 
     public static String getScore(String player1Name, String player2Name, int m_score1, int m_score2) {
         String score = "";
-        int tempScore=0;
+        int tempScore= LOVE;
         if (m_score1==m_score2)
         {
             switch (m_score1)
             {
-                case 0:
+                case LOVE:
                     score = "Love-All";
                     break;
-                case 1:
+                case FIFTEEN:
                     score = "Fifteen-All";
                     break;
-                case 2:
+                case THIRTY:
                     score = "Thirty-All";
                     break;
-                case 3:
+                case FORTY:
                     score = "Forty-All";
                     break;
                 default:
@@ -28,29 +33,29 @@ public class TennisGame {
         else if (m_score1>=4 || m_score2>=4)
         {
             int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
+            if (minusResult== FIFTEEN) score ="Advantage player1";
+            else if (minusResult ==-FIFTEEN) score ="Advantage player2";
+            else if (minusResult>= THIRTY) score = "Win for player1";
             else score ="Win for player2";
         }
         else
         {
-            for (int i=1; i<3; i++)
+            for (int i = FIFTEEN; i< FORTY; i++)
             {
-                if (i==1) tempScore = m_score1;
+                if (i== FIFTEEN) tempScore = m_score1;
                 else { score+="-"; tempScore = m_score2;}
                 switch(tempScore)
                 {
-                    case 0:
+                    case LOVE:
                         score+="Love";
                         break;
-                    case 1:
+                    case FIFTEEN:
                         score+="Fifteen";
                         break;
-                    case 2:
+                    case THIRTY:
                         score+="Thirty";
                         break;
-                    case 3:
+                    case FORTY:
                         score+="Forty";
                         break;
                 }
